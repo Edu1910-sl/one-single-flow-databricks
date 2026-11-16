@@ -9,7 +9,7 @@ Pipeline de engenharia de dados em **arquitetura Medallion (Bronze → Silver �
 **Stack:** Databricks · PySpark · Spark SQL · Delta Lake · Unity Catalog (schemas, volumes, comentários) ·
 Lakeflow Jobs · AI/BI Dashboards
 
-![Painel de produção no Databricks AI/BI](docs/img/dashboard.png)
+![Painel de produção no Databricks AI/BI](dashboard.png)
 
 ---
 
@@ -69,11 +69,11 @@ flowchart LR
 
 **Job orquestrando as 4 camadas:**
 
-![Job do pipeline Medallion](docs/img/job_pipeline.png)
+![Job do pipeline Medallion](job_pipeline.png)
 
 **Filtro global por linha de produção (L2):** o filtro se aplica aos gráficos e à tabela. Os KPIs do topo mostram o período completo, porque vêm de um dataset já agregado (próximo passo: calculá-los direto da `gold_storyline_produto` para responderem ao filtro).
 
-![Dashboard filtrado pela linha L2](docs/img/dashboard_filtro_L2.png)
+![Dashboard filtrado pela linha L2](dashboard_filtro_L2.png)
 
 ## Decisões técnicas
 
@@ -86,7 +86,7 @@ flowchart LR
 ## Como rodar (Databricks Free Edition, gratuito)
 
 1. Crie uma conta em **databricks.com/learn/free-edition**.
-2. **Workspace → Create → Git folder** e cole a URL deste repositório (ou **Import** dos arquivos da pasta `notebooks`).
+2. **Workspace → Create → Git folder** e cole a URL deste repositório (ou **Import** dos arquivos `.py` e `.sql`).
 3. Rode os notebooks em ordem: `00_setup` → `01` → `02` → `03` → `04` → `05`.
 4. **Jobs & Pipelines → Create job** com 4 tarefas encadeadas: `02_bronze` → `03_silver` → `04_gold` → `05_qualidade_dados`.
 5. **Dashboards → Create dashboard** e use as consultas de `06_consultas_dashboard.sql` como datasets.
